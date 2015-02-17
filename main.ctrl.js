@@ -1,4 +1,4 @@
-angular.module('app').controller("MainController", ['$http', function($http){
+angular.module('app').controller("MainController", function(){
     var vm = this;
     vm.title = 'AngularJS Tutorial Example';
     vm.searchInput = '';
@@ -38,4 +38,4 @@ angular.module('app').controller("MainController", ['$http', function($http){
         vm.members.push(vm.new);
         vm.new = {};
     };
-}]);
+});
