@@ -9,5 +9,26 @@
   
 <body ng-app="app" ng-controller="MainController as main">
   
+  <h1>{{main.title}}</h1>
+  
+  <!-- Search-->
+  <input type="text" ng-model="main.searchInput">
+  
+  
+  <h3>A list of hacksu members</h3>
+  <ul>
+    <li ng-repeat="member in main.members | filter:main.searchInput | orderBy:main.order.key"> {{member.name}} {{member.color}}</li>
+  </ul>
+  <select ng-model="main.order" ng-options="order as order.title for order in main.orders"></select>
+  
+  
+  <h3>Add a new member</h3>
+  <form name="main.addForm" ng-submit="main.addMember()">
+    <p>Name: <input type="text" ng-model="main.new.name" required /> </p>
+    <p>Color: <input type="text" ng-model="main.new.color" required /> </p>
+    <button>Add</button>
+  </form>
+  
+  
 </body>
 </html>
