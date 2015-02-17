@@ -6,29 +6,28 @@
     <script src="app.js"></script>
     <script src="main.ctrl.js"></script>
 </head>
-  
+
 <body ng-app="app" ng-controller="MainController as main">
-  
+
   <h1>{{main.title}}</h1>
-  
+
   <!-- Search-->
   <input type="text" ng-model="main.searchInput">
-  
-  
-  <h3>A list of hacksu members</h3>
+
+  <h3>A list of links</h3>
   <ul>
-    <li ng-repeat="member in main.members | filter:main.searchInput | orderBy:main.order.key"> {{member.name}} {{member.color}}</li>
+    <li ng-repeat="link in main.links | filter:main.searchInput | orderBy:link.score">
+      <a href="{{link.url}}">{{link.title}}</a>
+      <p>Votes: {{link.points}}</p>
+    </li>
   </ul>
-  <select ng-model="main.order" ng-options="order as order.title for order in main.orders"></select>
-  
-  
-  <h3>Add a new member</h3>
-  <form name="main.addForm" ng-submit="main.addMember()">
-    <p>Name: <input type="text" ng-model="main.new.name" required /> </p>
-    <p>Color: <input type="text" ng-model="main.new.color" required /> </p>
+
+  <h3>Add a new link</h3>
+  <form name="main.addForm" ng-submit="main.addLink()">
+    <p>URL: <input type="text" ng-model="main.new.url" required /> </p>
+    <p>Title: <input type="text" ng-model="main.new.title" required /> </p>
     <button>Add</button>
   </form>
-  
-  
+
 </body>
 </html>
